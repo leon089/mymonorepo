@@ -2,7 +2,7 @@ import re
 
 import name_extractor as a
 
-from .. import \
+from name_extractor import \
     logger  # Import the logger from the parent package's __init__.py
 
 

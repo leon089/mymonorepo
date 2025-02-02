@@ -78,4 +78,21 @@ services/data-processor/tests/test_processor.py .                               
 ✅ Build Complete!
 (venv) ➜  mymonorepo git:(main) ✗ 
 
-===
+=== .. import logger
+
+poetry run python name_extractor/use_data_processor.py
+
+2025-02-02 11:46:03,035 - name_extractor - DEBUG - Debug message - This is useful for diagnosing problems.
+2025-02-02 11:46:03,035 - name_extractor - INFO - Info message - This provides general information about the package behavior.
+2025-02-02 11:46:03,035 - name_extractor - WARNING - Warning message - Something is not quite right, but the package is still working.
+2025-02-02 11:46:03,035 - name_extractor - ERROR - Error message - Something went wrong.
+2025-02-02 11:46:03,035 - name_extractor - CRITICAL - Critical message - A serious problem occurred.
+2025-02-02 11:46:03,035 - name_extractor - INFO - Initializing the package...
+Traceback (most recent call last):
+  File "/Users/lihuagao/test/mymonorepo/services/name-extractor/name_extractor/use_data_processor.py", line 2, in <module>
+    from text.converter import extract_names_from_text
+  File "/Users/lihuagao/test/mymonorepo/services/name-extractor/name_extractor/text/converter.py", line 5, in <module>
+    from .. import \
+ImportError: attempted relative import beyond top-level package
+(venv) ➜  name-extractor git:(main) ✗ 
+
