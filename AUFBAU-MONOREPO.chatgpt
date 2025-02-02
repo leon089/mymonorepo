@@ -1,0 +1,240 @@
+### 🚀 **Setting Up a Monorepo for `name-extractor` with a New Service**
+
+We'll convert your current project into a **monorepo structure** and add another service, e.g., `data-processor`. We'll manage both using **Poetry**.
+
+---
+
+### ✅ **1. Monorepo Structure**
+
+```bash
+monorepo/
+├── services/
+│   ├── name-extractor/
+│   │   ├── name_extractor/
+│   │   ├── tests/
+│   │   ├── pyproject.toml
+│   │   ├── poetry.lock
+│   │   └── README.md
+│   └── data-processor/
+│       ├── data_processor/
+│       │   ├── __init__.py
+│       │   └── processor.py
+│       ├── tests/
+│       │   └── test_processor.py
+│       ├── pyproject.toml
+│       └── README.md
+├── pyproject.toml  # Root project config
+├── poetry.lock
+└── README.md
+```
+
+---
+
+### ✅ **2. Move `name-extractor` to `services/`**
+
+```bash
+mkdir -p monorepo/services
+mv name_extractor monorepo/services/name-extractor
+cd monorepo/services/name-extractor
+```
+
+---
+
+### ✅ **3. Add the New Service: `data-processor`**
+
+```bash
+cd monorepo/services
+poetry new data-processor
+```
+
+This creates:
+
+```
+data-processor/
+├── data_processor/
+│   └── __init__.py
+├── tests/
+└── pyproject.toml
+```
+
+---
+
+### ✅ **4. Root `pyproject.toml` for Monorepo**
+
+Create `monorepo/pyproject.toml`:
+
+```toml
+[tool.poetry]
+name = "monorepo-project"
+version = "0.1.0"
+description = "Monorepo for name-extractor and data-processor"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+flake8 = "^6.0.0"
+mypy = "^1.1.1"
+isort = "^5.12.0"
+pre-commit = "^4.1.0"
+
+[tool.poetry.workspace]
+packages = [
+    { path = "services/name-extractor" },
+    { path = "services/data-processor" }
+]
+```
+
+---
+
+### ✅ **5. Update Service `pyproject.toml` Files**
+
+#### `services/name-extractor/pyproject.toml`:
+```toml
+[tool.poetry]
+name = "name-extractor"
+version = "0.1.0"
+description = "Extract names from JSON and text files"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.0"
+```
+
+#### `services/data-processor/pyproject.toml`:
+```toml
+[tool.poetry]
+name = "data-processor"
+version = "0.1.0"
+description = "Service to process data"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.0"
+```
+
+---
+
+### ✅ **6. Install Dependencies for Both Services**
+
+Run this from the monorepo root:
+
+```bash
+cd monorepo
+poetry install
+```
+
+Poetry will install dependencies for both services.
+
+---
+
+### ✅ **7. Add a Simple Script to `data-processor`**
+
+`services/data-processor/data_processor/processor.py`:
+
+```python
+def process(data):
+    """Simple data processor."""
+    return [item.upper() for item in data]
+
+if __name__ == "__main__":
+    sample_data = ["apple", "banana", "cherry"]
+    print(process(sample_data))
+```
+
+Test it:
+
+```bash
+python services/data-processor/data_processor/processor.py
+```
+
+---
+
+### ✅ **8. Test Setup**
+
+Add a test for `data-processor`:
+
+```python
+# services/data-processor/tests/test_processor.py
+from data_processor.processor import process
+
+def test_process():
+    assert process(["apple", "banana"]) == ["APPLE", "BANANA"]
+```
+
+Run tests:
+
+```bash
+poetry run pytest
+```
+
+---
+
+### ✅ **9. Shared Linting & Pre-commit Hook**
+
+Move `.pre-commit-config.yaml` to the root and update:
+
+```yaml
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.1.0
+    hooks:
+      - id: black
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+```
+
+Install pre-commit hooks:
+
+```bash
+pre-commit install
+```
+
+---
+
+### 🚀 **10. Monorepo Build Script (`build.sh`)**
+
+```bash
+#!/bin/bash
+
+echo "🚀 Building Monorepo Services..."
+
+# Linting
+poetry run black services/
+poetry run isort services/
+poetry run flake8 services/
+
+# Tests
+poetry run pytest services/name-extractor/tests/
+poetry run pytest services/data-processor/tests/
+
+echo "✅ Build Complete!"
+```
+
+Make it executable:
+
+```bash
+chmod +x build.sh
+./build.sh
+```
+
+---
+
+### 🚀 **All Set!**
+
+You now have:
+- A **monorepo** structure with `name-extractor` and `data-processor`
+- Shared dependencies managed via **Poetry**
+- A unified build and test process
+
+Let me know if you'd like to add more features! 🚀

@@ -7,7 +7,6 @@ It expects at least one argument and raises an error if none are provided.
 
 # name_extractor/cli.py
 import click
-
 from name_extractor.json.converter import extract_names_from_json
 from name_extractor.text.converter import extract_names_from_text
 

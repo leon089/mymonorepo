@@ -36,5 +36,46 @@ If you want to use Poetry only for dependency management but not for packaging, 
 In a future version of Poetry this warning will become an error!
 (venv) ➜  mymonorepo git:(main) ✗ touch ERRORs
 
-===
+=== why tests in name-extractor didn't run
 
+./build.sh
+🚀 Building Monorepo Services...
+reformatted /Users/lihuagao/test/mymonorepo/services/name_extractor/name_extractor/text/converter.py
+reformatted /Users/lihuagao/test/mymonorepo/services/name_extractor/tests/test_cli2.py
+
+All done! ✨ 🍰 ✨
+2 files reformatted, 14 files left unchanged.
+Fixing /Users/lihuagao/test/mymonorepo/services/name_extractor/name_extractor/text/converter.py
+Fixing /Users/lihuagao/test/mymonorepo/services/name_extractor/tests/test_cli2.py
+services/name_extractor/name_extractor/__init__.py:26:80: E501 line too long (82 > 79 characters)
+services/name_extractor/name_extractor/__init__.py:29:80: E501 line too long (87 > 79 characters)
+services/name_extractor/name_extractor/cli2.py:23:80: E501 line too long (83 > 79 characters)
+services/name_extractor/tests/dummy_test.py:1:1: F401 'pytest' imported but unused
+services/name_extractor/tests/test_cli.py:3:1: F401 'io.StringIO' imported but unused
+services/name_extractor/tests/test_cli.py:10:80: E501 line too long (93 > 79 characters)
+services/name_extractor/tests/test_cli.py:24:80: E501 line too long (161 > 79 characters)
+services/name_extractor/tests/test_cli2.py:18:80: E501 line too long (105 > 79 characters)
+services/name_extractor/tests/test_cli2.py:21:80: E501 line too long (84 > 79 characters)
+services/name_extractor/tests/test_cli2.py:40:80: E501 line too long (88 > 79 characters)
+services/name_extractor/tests/test_cli2.py:54:80: E501 line too long (84 > 79 characters)
+services/name_extractor/tests/test_cli2.py:70:80: E501 line too long (84 > 79 characters)
+=============================================== test session starts ===============================================
+platform darwin -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /Users/lihuagao/test/mymonorepo
+collected 0 items                                                                                                 
+
+============================================== no tests ran in 0.00s ==============================================
+ERROR: file or directory not found: services/name-extractor/tests/
+
+=============================================== test session starts ===============================================
+platform darwin -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /Users/lihuagao/test/mymonorepo
+collected 1 item                                                                                                  
+
+services/data-processor/tests/test_processor.py .                                                           [100%]
+
+================================================ 1 passed in 0.01s ================================================
+✅ Build Complete!
+(venv) ➜  mymonorepo git:(main) ✗ 
+
+===

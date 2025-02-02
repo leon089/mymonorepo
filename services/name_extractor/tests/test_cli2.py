@@ -4,7 +4,6 @@ import sys
 from unittest.mock import patch
 
 import pytest
-
 from name_extractor.cli2 import main
 
 

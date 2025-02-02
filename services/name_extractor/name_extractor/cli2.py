@@ -20,9 +20,7 @@ def main():
     names from input arguments.
     It expects at least one argument and raises an error if none are provided.
     """
-    parser = argparse.ArgumentParser(
-        description="Extract names from text or JSON"
-    )
+    parser = argparse.ArgumentParser(description="Extract names from text or JSON")
 
     parser.add_argument("input", help="Input file path or text string")
     parser.add_argument(
