@@ -35,3 +35,6 @@ pyenv local 3.9.16
 ===
 python services/data-processor/data_processor/processor.py
 
+==
+copied name-extractor
+pytest under name-extractor OK
