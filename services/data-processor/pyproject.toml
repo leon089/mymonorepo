@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "data-processor"
+version = "0.1.0"
+description = ""
+authors = ["Lihua Gao <lihua.gao@deutschebahn.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.0"

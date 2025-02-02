@@ -1,0 +1,40 @@
+poetry install
+Updating dependencies
+Resolving dependencies... (2.1s)
+
+Package operations: 22 installs, 0 updates, 0 removals
+
+  - Installing distlib (0.3.9)
+  - Installing filelock (3.17.0)
+  - Installing platformdirs (4.3.6)
+  - Installing cfgv (3.4.0)
+  - Installing click (8.1.8)
+  - Installing identify (2.6.6)
+  - Installing mccabe (0.7.0)
+  - Installing mypy-extensions (1.0.0)
+  - Installing nodeenv (1.9.1)
+  - Installing packaging (24.2)
+  - Installing pathspec (0.12.1)
+  - Installing pycodestyle (2.11.1)
+  - Installing pyflakes (3.1.0)
+  - Installing pyyaml (6.0.2)
+  - Installing tomli (2.2.1)
+  - Installing typing-extensions (4.12.2)
+  - Installing virtualenv (20.29.1)
+  - Installing black (23.12.1)
+  - Installing flake8 (6.1.0)
+  - Installing isort (5.13.2)
+  - Installing mypy (1.14.1)
+  - Installing pre-commit (4.1.0)
+
+Writing lock file
+
+Installing the current project: monorepo-project (0.1.0)
+Warning: The current project could not be installed: No file/folder found for package monorepo-project
+If you do not want to install the current project use --no-root.
+If you want to use Poetry only for dependency management but not for packaging, you can disable package mode by setting package-mode = false in your pyproject.toml file.
+In a future version of Poetry this warning will become an error!
+(venv) ➜  mymonorepo git:(main) ✗ touch ERRORs
+
+===
+
